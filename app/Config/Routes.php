@@ -33,6 +33,7 @@ $routes->get('/', 'User::login');
 $routes->get('/login', 'User::login');
 $routes->post('/login', 'User::loginProcess');
 $routes->get('/register', 'User::register');
+$routes->post('/register', 'User::registerProcess');
 
 /*
  * --------------------------------------------------------------------

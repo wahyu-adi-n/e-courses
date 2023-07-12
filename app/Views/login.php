@@ -40,17 +40,15 @@
                                     </div>
                                     <form class="user" action="/login" method="post">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" name="email" id="email" placeholder="Masukkan Email">
+                                            <input type="email" class="form-control form-control-user" name="email" id="email" placeholder="Masukkan Email" required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="pwd" name="pwd" placeholder="Masukkan Password">
+                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukkan Password" required>
                                         </div>
 
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-primary btn-user btn-block" value="Sign In">
                                         </div>
-
-
 
                                     </form>
                                     <hr>
