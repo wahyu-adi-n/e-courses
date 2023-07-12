@@ -27,11 +27,12 @@ class User extends BaseController
 
         if ($email === "admin@gmail.com" && $password === 'admin123') {
             return 'Halaman Admin';
+        }
 
-            if ($cek == 'NULL' || $cek == 'null' || $cek == null) {
-                session()->setFlashdata('fail', 'Email atau Password Salah!');
-                return redirect()->redirect("/login");
-            }
+        if ($cek == 'NULL' || $cek == 'null' || $cek == null) {
+            session()->setFlashdata('fail', 'Email atau Password Salah!');
+            // return redirect()->redirect("/login");
+            return "Password mu kleru!";
         } else {
             session()->set([
                 'kode_user' => $cek['kode_user'],
