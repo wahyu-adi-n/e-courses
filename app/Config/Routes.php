@@ -29,11 +29,36 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'User::login');
-$routes->get('/login', 'User::login');
-$routes->post('/login', 'User::loginProcess');
-$routes->get('/register', 'User::register');
-$routes->post('/register', 'User::registerProcess');
+
+# Halaman Umum
+
+$routes->get('/', 'Home::login');
+$routes->get('/login', 'Home::login');
+$routes->post('/login', 'Home::loginProcess');
+$routes->post('/logout', 'Home::logout');
+$routes->get('/register', 'Home::register');
+$routes->post('/register', 'Home::registerProcess');
+
+# Halaman Admin
+$routes->get('/admin', 'Admin::index');
+$routes->get('/admin/dashboard', 'Admin::index');
+$routes->get('/admin/peserta', 'Admin::pesertaPage');
+$routes->get('/admin/pelatihan', 'Admin::pelatihanPage');
+$routes->get('/admin/instruktur', 'Admin::instrukturPage');
+
+# Halaman Peserta
+$routes->get('/peserta', 'Peserta::index');
+$routes->get('/peserta/dashboard', 'Peserta::index');
+$routes->get('/peserta/peserta', 'Peserta::pesertaPage');
+$routes->get('/peserta/pelatihan', 'Peserta::pelatihanPage');
+$routes->get('/peserta/instruktur', 'Peserta::instrukturPage');
+
+# Halaman Instruktur
+$routes->get('/Instruktur', 'Instruktur::index');
+$routes->get('/Instruktur/dashboard', 'Instruktur::index');
+$routes->get('/Instruktur/peserta', 'Instruktur::pesertaPage');
+$routes->get('/Instruktur/pelatihan', 'Instruktur::pelatihanPage');
+$routes->get('/Instruktur/instruktur', 'Instruktur::instrukturPage');
 
 /*
  * --------------------------------------------------------------------
