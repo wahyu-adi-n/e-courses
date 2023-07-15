@@ -161,7 +161,7 @@
                                                 <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Masukkan Deskripsi Pelatihan" required></textarea>
                                             </div>
                                             <div class="mb-3">
-                                                <input type="date" class="form-control" name="tgl_mulai" id="tgl_mulai" placeholder="Masukkan Tanggal Mulai Pelatihan" required>
+                                                <input type="date" class="form-control" name="tgl_mulai" id="tgl_mulai" oninput="setEndDateMin()" placeholder="Masukkan Tanggal Mulai Pelatihan" required>
                                             </div>
                                             <div class="mb-3">
                                                 <input type="date" class="form-control" name="tgl_selesai" id="tgl_selesai" placeholder="Masukkan Tanggal Selesai Pelatihan" required>
@@ -237,7 +237,12 @@
 
     <!-- Page level custom scripts -->
     <script src="/js/demo/datatables-demo.js"></script>
-
+    <script>
+        function setEndDateMin() {
+            var startDate = document.getElementById("tgl_mulai").value;
+            document.getElementById("tgl_selesai").setAttribute("min", startDate);
+        }
+    </script>
 </body>
 
 </html>

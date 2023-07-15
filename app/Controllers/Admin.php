@@ -242,7 +242,7 @@ class Admin extends BaseController
             'lokasi' => $this->request->getVar('lokasi'),
             'kode_instruktur' => $this->request->getVar('kode_instruktur'),
         ]);
-        return redirect()->redirect("admin/pelatihan");
+        return redirect()->redirect("/admin/pelatihan");
     }
 
 

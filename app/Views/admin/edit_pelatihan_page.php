@@ -158,16 +158,29 @@
                                                 <input type="text" class="form-control" name="kode_pelatihan" id="kode_pelatihan" value="<?= $pelatihan['kode_pelatihan']; ?>" required readonly>
                                             </div>
                                             <div class="mb-3">
-                                                <input type="text" class="form-control" name="nama" id="nama" value="<?= $pelatihan['nama']; ?>" required placeholder="Ubah Nama Pelatihan">
+                                                <input type="text" class="form-control" name="nama_pelatihan" id="nama_pelatihan" value="<?= $pelatihan['nama_pelatihan']; ?>" required placeholder="Ubah Nama Pelatihan">
                                             </div>
                                             <div class="mb-3">
-                                                <input type="email" class="form-control" name="email" id="email" value="<?= $pelatihan['email']; ?>" required placeholder="Ubah Nama Pelatihan">
+                                                <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Ubah Deskripsi Pelatihan" required><?= $pelatihan['deskripsi']; ?></textarea>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <input type="date" class="form-control" name="tgl_mulai" id="tgl_mulai" oninput="setEndDateMin()" placeholder="Ubah Tanggal Mulai Pelatihan" value="<?= $pelatihan['tgl_mulai']; ?>" required>
                                             </div>
                                             <div class="mb-3">
-                                                <input type="text" class="form-control" name="username" id="username" value="<?= $pelatihan['username']; ?>" required>
+                                                <input type="date" class="form-control" name="tgl_selesai" id="tgl_selesai" value="<?= $pelatihan['tgl_selesai']; ?>" placeholder="Ubah Tanggal Selesai Pelatihan" required>
                                             </div>
                                             <div class="mb-3">
-                                                <input type="password" class="form-control" name="password" id="password" value="<?= $pelatihan['password']; ?>" required placeholder="Ubah Password Pelatihan">
+                                                <input type="text" class="form-control" value="<?= $pelatihan['lokasi']; ?>" name="lokasi" id="lokasi" placeholder="Ubah Lokasi Pelatihan" required>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <select class="form-control" name="kode_instruktur" id="kode_instruktur" required>
+                                                    <option value="<?= $pelatihan['kode_instruktur']; ?>"><?= $pelatihan['kode_instruktur']; ?></option>
+                                                    <option value="0">Saab</option>
+                                                    <option value="1">Mercedes</option>
+                                                    <option value="2">Audi</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -229,6 +242,12 @@
 
     <!-- Page level custom scripts -->
     <script src="/js/demo/datatables-demo.js"></script>
+    <script>
+        function setEndDateMin() {
+            var startDate = document.getElementById("tgl_mulai").value;
+            document.getElementById("tgl_selesai").setAttribute("min", startDate);
+        }
+    </script>
 
 </body>
 
