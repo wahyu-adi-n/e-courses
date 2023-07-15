@@ -9,10 +9,16 @@ class PelatihanModel extends Model
     protected $table = 'pelatihan';
     protected $primaryKey = 'kode_pelatihan';
     protected $allowedFields = [
-        'nama_pelatihan', 'deskripsi', 'tgl_mulai',
-        'tgl_selesai', 'durasi_pelatihan',
-        'lokasi', 'kode_instruktur'
+        'kode_pelatihan', 'nama_pelatihan', 'deskripsi', 'tgl_mulai',
+        'tgl_selesai', 'lokasi', 'kode_instruktur'
     ];
+
+
+    public function cek($id)
+    {
+        return $this->db->query("SELECT * FROM $this->table WHERE kode_pelatihan ='$id'")->getRowArray();
+    }
+
 
     public function getAllDataPelatihan($id = false)
     {
@@ -32,8 +38,8 @@ class PelatihanModel extends Model
         return $this->db->query("SELECT * FROM $this->table")->getNumRows();
     }
 
-    // public function getUserByEmail($email)
-    // {
-    //     return $this->db->query("SELECT * FROM $this->table WHERE email = '$email'")->getRowArray();
-    // }
+    public function getPelatihanByID($id)
+    {
+        return $this->db->query("SELECT * FROM $this->table WHERE kode_pelatihan = '$id'")->getRowArray();
+    }
 }

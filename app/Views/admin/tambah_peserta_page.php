@@ -155,20 +155,20 @@
                                     <form class="user" action="/admin/peserta/tambah" method="post">
                                         <div class="form-group">
                                             <div class="mb-3">
-                                                <input type="text" class="form-control form-control-user" name="nama" id="nama" placeholder="Masukkan Nama" required>
+                                                <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Peserta" required>
                                             </div>
                                             <div class="mb-3">
-                                                <input type="email" class="form-control form-control-user" name="email" id="email" placeholder="Masukkan Email" required>
+                                                <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email Peserta" required>
                                             </div>
                                             <div class="mb-3">
-                                                <input type="text" class="form-control form-control-user" name="username" id="username" placeholder="Masukkan Username" required>
+                                                <input type="text" class="form-control" name="username" id="username" placeholder="Masukkan Username Peserta" required>
                                             </div>
                                             <div class="mb-3">
-                                                <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Masukkan Password" required>
+                                                <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Password Peserta" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="submit" class="btn btn-primary btn-user btn-block" value="Tambah">
+                                            <input type="submit" class="btn btn-primary btn-user btn-block" value="Tambah Data Peserta">
                                         </div>
                                         <hr>
                                     </form>

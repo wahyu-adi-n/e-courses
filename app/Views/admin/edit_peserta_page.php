@@ -155,23 +155,23 @@
                                     <form class="user" action="/admin/peserta/edit/<?= $peserta['kode_user']; ?>" method="post">
                                         <div class="form-group">
                                             <div class="mb-3">
-                                                <input type="text" class="form-control form-control-user" name="kode_user" id="kode_user" value="<?= $peserta['kode_user']; ?>" required readonly>
+                                                <input type="text" class="form-control" name="kode_user" id="kode_user" value="<?= $peserta['kode_user']; ?>" required readonly>
                                             </div>
                                             <div class="mb-3">
-                                                <input type="text" class="form-control form-control-user" name="nama" id="nama" value="<?= $peserta['nama']; ?>" required>
+                                                <input type="text" class="form-control" name="nama" id="nama" value="<?= $peserta['nama']; ?>" required placeholder="Ubah Nama Peserta">
                                             </div>
                                             <div class="mb-3">
-                                                <input type="email" class="form-control form-control-user" name="email" id="email" value="<?= $peserta['email']; ?>" required>
+                                                <input type="email" class="form-control" name="email" id="email" value="<?= $peserta['email']; ?>" required placeholder="Ubah Email Peserta">
                                             </div>
                                             <div class="mb-3">
-                                                <input type="text" class="form-control form-control-user" name="username" id="username" value="<?= $peserta['username']; ?>" required>
+                                                <input type="text" class="form-control" name="username" id="username" value="<?= $peserta['username']; ?>" required placeholder="Ubah Username Peserta">
                                             </div>
                                             <div class="mb-3">
-                                                <input type="password" class="form-control form-control-user" name="password" id="password" value="<?= $peserta['password']; ?>" required>
+                                                <input type="password" class="form-control" name="password" id="password" value="<?= $peserta['password']; ?>" required placeholder="Ubah Password Peserta">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="submit" class="btn btn-primary btn-user btn-block" value="Ubah">
+                                            <input type="submit" class="btn btn-primary btn-user btn-block" value="Ubah Data Peserta">
                                         </div>
                                         <hr>
                                     </form>

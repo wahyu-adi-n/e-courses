@@ -8,7 +8,12 @@ class InstrukturModel extends Model
 {
     protected $table = 'instruktur';
     protected $primaryKey = 'kode_instruktur';
-    protected $allowedFields = ['nama_instruktur',    'alamat',    'nohp', 'email',];
+    protected $allowedFields = ['kode_instruktur', 'nama_instruktur',    'alamat',    'nohp', 'email',];
+
+    public function cek($email)
+    {
+        return $this->db->query("SELECT * FROM $this->table WHERE email ='$email'")->getRowArray();
+    }
 
     public function getAllDataInstruktur($id = false)
     {
@@ -28,8 +33,8 @@ class InstrukturModel extends Model
         return $this->db->query("SELECT * FROM $this->table")->getNumRows();
     }
 
-    // public function getUserByEmail($email)
-    // {
-    //     return $this->db->query("SELECT * FROM $this->table WHERE email = '$email'")->getRowArray();
-    // }
+    public function getInstrukturByID($id)
+    {
+        return $this->db->query("SELECT * FROM $this->table WHERE kode_instruktur = '$id'")->getRowArray();
+    }
 }

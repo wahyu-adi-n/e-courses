@@ -123,12 +123,12 @@ class Admin extends BaseController
         if ($cek == 'NULL' || $cek == 'null' || $cek == null) {
             $instruktur->save([
                 'nama_instruktur' => $this->request->getVar('nama_instruktur'),
-                'alamat' => $this->request->getVar('alamt'),
+                'alamat' => $this->request->getVar('alamat'),
                 'nohp' => $this->request->getVar('nohp'),
                 'email' => $this->request->getVar('email'),
             ]);
             session()->setFlashdata('success', 'Data Instruktur Berhasil Didaftarkan!');
-            return redirect()->redirect("/admin/instruktur/tambah");
+            return redirect()->redirect("/admin/instruktur");
         } else {
             session()->setFlashdata('fail', 'Data Instruktur Sudah Terdaftar!');
             return redirect()->redirect("/admin/instruktur/tambah");
@@ -155,12 +155,14 @@ class Admin extends BaseController
         if ($cek == 'NULL' || $cek == 'null' || $cek == null) {
             $pelatihan->save([
                 'nama_pelatihan' => $this->request->getVar('nama_pelatihan'),
-                'username' => $this->request->getVar('username'),
-                'email' => $this->request->getVar('email'),
-                'password' => $this->request->getVar('password'),
+                'deskripsi' => $this->request->getVar('deskripsi'),
+                'tgl_mulai' => $this->request->getVar('tgl_mulai'),
+                'tgl_selesai' => $this->request->getVar('tgl_selesai'),
+                'lokasi' => $this->request->getVar('lokasi'),
+                'kode_instruktur' => $this->request->getVar('kode_instruktur'),
             ]);
             session()->setFlashdata('success', 'Data Pelatihan Berhasil Didaftarkan!');
-            return redirect()->redirect("/admin/pelatihan/tambah");
+            return redirect()->redirect("/admin/pelatihan");
         } else {
             session()->setFlashdata('fail', 'Data Pelatihan Sudah Terdaftar!');
             return redirect()->redirect("/admin/pelatihan/tambah");
@@ -182,19 +184,23 @@ class Admin extends BaseController
 
     public function editInstrukturPage($id)
     {
+        $instruktur = new InstrukturModel();
         return view('admin/edit_instruktur_page', [
             'title' => 'E-Course',
             'header' => 'Halaman Edit Instruktur',
             'kode_instruktur' =>  $id,
+            'instruktur' => $instruktur->getInstrukturByID($id),
         ]);
     }
 
     public function editPelatihanPage($id)
     {
+        $pelatihan = new PelatihanModel();
         return view('admin/edit_pelatihan_page', [
             'title' => 'E-Course',
             'header' => 'Halaman Edit Pelatihan',
             'kode_pelatihan' =>  $id,
+            'pelatihan' => $pelatihan->getPelatihanByID($id),
         ]);
     }
 
@@ -213,34 +219,30 @@ class Admin extends BaseController
 
     public function updateInstrukturProcess($id)
     {
-        $instruktur = new InstrukturModel();
+        $instruktur = new instrukturModel();
         $instruktur->save([
-            'id_mobil' => $id,
-            'id_jenis' => $this->request->getVar('id_jenis'),
-            'type_mobil' => $this->request->getVar('type_mobil'),
-            'merk' => $this->request->getVar('merk'),
-            'no_polisi' => $this->request->getVar('no_polisi'),
-            'warna' => $this->request->getVar('warna'),
-            'harga' => $this->request->getVar('harga'),
-            'status' => $this->request->getvar('status')
+            'kode_instruktur' => $id,
+            'nama_instruktur' => $this->request->getVar('nama_instruktur'),
+            'alamat' => $this->request->getVar('alamat'),
+            'nohp' => $this->request->getVar('nohp'),
+            'email' => $this->request->getVar('email'),
         ]);
-        return redirect()->redirect("admin/instruktur_page");
+        return redirect()->redirect("/admin/instruktur");
     }
 
     public function updatePelatihanProcess($id)
     {
         $pelatihan = new PelatihanModel();
         $pelatihan->save([
-            'id_mobil' => $id,
-            'id_jenis' => $this->request->getVar('id_jenis'),
-            'type_mobil' => $this->request->getVar('type_mobil'),
-            'merk' => $this->request->getVar('merk'),
-            'no_polisi' => $this->request->getVar('no_polisi'),
-            'warna' => $this->request->getVar('warna'),
-            'harga' => $this->request->getVar('harga'),
-            'status' => $this->request->getvar('status')
+            'kode_pelatihan' => $id,
+            'nama_pelatihan' => $this->request->getVar('nama_pelatihan'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'tgl_mulai' => $this->request->getVar('tgl_mulai'),
+            'tgl_selesai' => $this->request->getVar('tgl_selesai'),
+            'lokasi' => $this->request->getVar('lokasi'),
+            'kode_instruktur' => $this->request->getVar('kode_instruktur'),
         ]);
-        return redirect()->redirect("admin/pelatihan_page");
+        return redirect()->redirect("admin/pelatihan");
     }
 
 
