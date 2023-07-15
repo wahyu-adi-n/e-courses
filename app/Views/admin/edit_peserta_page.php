@@ -148,40 +148,33 @@
                             <!-- DataTales Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Daftar User</h6>
-                                    <a href="/admin/peserta/tambah" class="badge badge-primary badgepill mt-3">Tambah</a>
+                                    <h6 class="m-0 font-weight-bold text-primary">Form Ubah Data Peserta</h6>
+                                    <a href="/admin/peserta" class="badge badge-primary badgepill mt-3">Back</a>
                                 </div>
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Nama</th>
-                                                    <th>Username</th>
-                                                    <th>Email</th>
-                                                    <th>Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                $no = 1;
-                                                foreach ($peserta as $p) :
-                                                ?>
-                                                    <tr>
-                                                        <td><?= $no++; ?></td>
-                                                        <td><?= $p['nama']; ?></td>
-                                                        <td><?= $p['username']; ?></td>
-                                                        <td><?= $p['email']; ?></td>
-                                                        <td>
-                                                            <a href="/admin/peserta/edit/<?= $p['kode_user'] ?>" class="badge badge-success badgepill">Ubah</a>
-                                                            <a href="/admin/peserta/hapus/<?= $p['kode_user'] ?>" class="badge badge-danger badgepill" onclick="return confirm('Yakin menghapus user dengan kode: <?= $p['kode_user'] ?>?')">Hapus</a>
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach; ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    <form class="user" action="/admin/peserta/edit/<?= $peserta['kode_user']; ?>" method="post">
+                                        <div class="form-group">
+                                            <div class="mb-3">
+                                                <input type="text" class="form-control form-control-user" name="kode_user" id="kode_user" value="<?= $peserta['kode_user']; ?>" required readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="text" class="form-control form-control-user" name="nama" id="nama" value="<?= $peserta['nama']; ?>" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="email" class="form-control form-control-user" name="email" id="email" value="<?= $peserta['email']; ?>" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="text" class="form-control form-control-user" name="username" id="username" value="<?= $peserta['username']; ?>" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="password" class="form-control form-control-user" name="password" id="password" value="<?= $peserta['password']; ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-primary btn-user btn-block" value="Ubah">
+                                        </div>
+                                        <hr>
+                                    </form>
                                 </div>
                             </div>
                         </div>

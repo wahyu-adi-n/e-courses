@@ -73,10 +73,14 @@ class Admin extends BaseController
 
     public function addPesertaPage()
     {
-        return view('admin/tambah_peserta_page', [
-            'title' => 'E-Course',
-            'header' => 'Halaman Tambah Peserta',
-        ]);
+        if (session()->get('nama') !== null) {
+            return view('admin/tambah_peserta_page', [
+                'title' => 'E-Course',
+                'header' => 'Halaman Tambah Peserta',
+            ]);
+        }
+        session()->setFlashdata('fail', 'Anda Belum Login!');
+        return redirect()->redirect("/");
     }
 
     public function addPesertaProcess()
@@ -101,10 +105,14 @@ class Admin extends BaseController
 
     public function addInstrukturPage()
     {
-        return view('admin/tambah_instruktur_page', [
-            'title' => 'E-Course',
-            'header' => 'Halaman Tambah Instruktur',
-        ]);
+        if (session()->get('nama') !== null) {
+            return view('admin/tambah_instruktur_page', [
+                'title' => 'E-Course',
+                'header' => 'Halaman Tambah Instruktur',
+            ]);
+        }
+        session()->setFlashdata('fail', 'Anda Belum Login!');
+        return redirect()->redirect("/");
     }
 
     public function addInstrukturProcess()
@@ -129,10 +137,14 @@ class Admin extends BaseController
 
     public function addPelatihanPage()
     {
-        return view('admin/tambah_pelatihan_page', [
-            'title' => 'E-Course',
-            'header' => 'Halaman Tambah Pelatihan',
-        ]);
+        if (session()->get('nama') !== null) {
+            return view('admin/tambah_pelatihan_page', [
+                'title' => 'E-Course',
+                'header' => 'Halaman Tambah Pelatihan',
+            ]);
+        }
+        session()->setFlashdata('fail', 'Anda Belum Login!');
+        return redirect()->redirect("/");
     }
 
     public function addPelatihanProcess()
@@ -157,10 +169,14 @@ class Admin extends BaseController
 
     public function editPesertaPage($id)
     {
+        $user = new UserModel();
+        // var_dump($user->getUserByID($id));
+
         return view('admin/edit_peserta_page', [
             'title' => 'E-Course',
             'header' => 'Halaman Edit Peserta',
             'kode_user' =>  $id,
+            'peserta' => $user->getUserByID($id),
         ]);
     }
 
@@ -186,16 +202,13 @@ class Admin extends BaseController
     {
         $user = new UserModel();
         $user->save([
-            'id_mobil' => $id,
-            'id_jenis' => $this->request->getVar('id_jenis'),
-            'type_mobil' => $this->request->getVar('type_mobil'),
-            'merk' => $this->request->getVar('merk'),
-            'no_polisi' => $this->request->getVar('no_polisi'),
-            'warna' => $this->request->getVar('warna'),
-            'harga' => $this->request->getVar('harga'),
-            'status' => $this->request->getvar('status')
+            'kode_user' => $id,
+            'nama' => $this->request->getVar('nama'),
+            'email' => $this->request->getVar('email'),
+            'username' => $this->request->getVar('username'),
+            'password' => $this->request->getVar('password'),
         ]);
-        return redirect()->redirect("admin/peserta_page");
+        return redirect()->redirect("/admin/peserta");
     }
 
     public function updateInstrukturProcess($id)

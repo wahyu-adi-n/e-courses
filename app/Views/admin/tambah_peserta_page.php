@@ -149,6 +149,7 @@
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Form Tambah User</h6>
+                                    <a href="/admin/peserta" class="badge badge-info badgepill mt-3">Back</a>
                                 </div>
                                 <div class="card-body">
                                     <form class="user" action="/admin/peserta/tambah" method="post">

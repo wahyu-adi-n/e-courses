@@ -8,7 +8,7 @@ class UserModel extends Model
 {
     protected $table = 'user';
     protected $primaryKey = 'kode_user';
-    protected $allowedFields = ['nama', 'email', 'username', 'password',];
+    protected $allowedFields = ['kode_user', 'nama', 'email', 'username', 'password',];
 
     public function login($email, $password)
     {
@@ -38,8 +38,8 @@ class UserModel extends Model
         return $this->db->query("SELECT * FROM $this->table")->getNumRows();
     }
 
-    // public function getUserByEmail($email)
-    // {
-    //     return $this->db->query("SELECT * FROM $this->table WHERE email = '$email'")->getRowArray();
-    // }
+    public function getUserByID($id)
+    {
+        return $this->db->query("SELECT * FROM $this->table WHERE kode_user = '$id'")->getRowArray();
+    }
 }
