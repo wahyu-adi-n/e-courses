@@ -66,7 +66,7 @@
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/instruktur') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/admin/instruktur">
-                    <i class="fas fa-wrench"></i>
+                    <i class="fas fa-users"></i>
                     <span>Daftar Instruktur</span>
                 </a>
             </li>

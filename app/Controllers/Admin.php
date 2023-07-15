@@ -46,6 +46,7 @@ class Admin extends BaseController
     public function pelatihanPage()
     {
         $pelatihan = new  PelatihanModel();
+        // var_dump($pelatihan->getAllDataPelatihan());
         if (session()->get('nama') !== null) {
             return view('admin/pelatihan_page', [
                 'title' => 'E-Course',
@@ -137,10 +138,12 @@ class Admin extends BaseController
 
     public function addPelatihanPage()
     {
+        $instruktur = new InstrukturModel();
         if (session()->get('nama') !== null) {
             return view('admin/tambah_pelatihan_page', [
                 'title' => 'E-Course',
                 'header' => 'Halaman Tambah Pelatihan',
+                'instruktur' => $instruktur->getAllDataInstruktur(),
             ]);
         }
         session()->setFlashdata('fail', 'Anda Belum Login!');
@@ -196,11 +199,13 @@ class Admin extends BaseController
     public function editPelatihanPage($id)
     {
         $pelatihan = new PelatihanModel();
+        $instruktur =  new InstrukturModel();
         return view('admin/edit_pelatihan_page', [
             'title' => 'E-Course',
             'header' => 'Halaman Edit Pelatihan',
             'kode_pelatihan' =>  $id,
             'pelatihan' => $pelatihan->getPelatihanByID($id),
+            'instruktur' => $instruktur->getAllDataInstruktur(),
         ]);
     }
 

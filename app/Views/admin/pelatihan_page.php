@@ -66,7 +66,7 @@
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/instruktur') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/admin/instruktur">
-                    <i class="fas fa-wrench"></i>
+                    <i class="fas fa-users"></i>
                     <span>Daftar Instruktur</span>
                 </a>
             </li>
@@ -179,7 +179,9 @@
                                                         <td><?= $pe['deskripsi']; ?></td>
                                                         <td><?= $pe['tgl_mulai']; ?> - <?= $pe['tgl_selesai']; ?></td>
                                                         <td><?= $pe['lokasi']; ?></td>
-                                                        <td><?= $pe['kode_instruktur']; ?></td>
+                                                        <td><?= $pe['nama_instruktur']; ?>
+                                                            <?= $pe['email']; ?><br>
+                                                        </td>
                                                         <td>Daftar Peserta</td>
                                                         <td>
                                                             <a href="/admin/pelatihan/edit/<?= $pe['kode_pelatihan'] ?>" class="badge badge-success badgepill">Ubah</a>

@@ -23,9 +23,9 @@ class PelatihanModel extends Model
     public function getAllDataPelatihan($id = false)
     {
         if ($id === false) {
-            return $this->db->query("SELECT * FROM $this->table ORDER BY kode_pelatihan ASC ")->getResultArray();
+            return $this->db->query("SELECT * FROM $this->table LEFT JOIN instruktur ON $this->table.kode_instruktur = instruktur.kode_instruktur ORDER BY kode_pelatihan ASC ")->getResultArray();
         }
-        return $this->db->query("SELECT * FROM $this->table WHERE kode_pelatihan = $id")->getRowArray();
+        return $this->db->query("SELECT * FROM $this->table LEFT JOIN instruktur ON $this->table.kode_instruktur = instruktur.kode_instruktur WHERE kode_pelatihan = $id")->getRowArray();
     }
 
     public function deletePelatihan($id)
@@ -40,6 +40,6 @@ class PelatihanModel extends Model
 
     public function getPelatihanByID($id)
     {
-        return $this->db->query("SELECT * FROM $this->table WHERE kode_pelatihan = '$id'")->getRowArray();
+        return $this->db->query("SELECT * FROM $this->table LEFT JOIN instruktur ON $this->table.kode_instruktur = instruktur.kode_instruktur WHERE kode_pelatihan = '$id'")->getRowArray();
     }
 }

@@ -66,7 +66,7 @@
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/instruktur') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/admin/instruktur">
-                    <i class="fas fa-wrench"></i>
+                    <i class="fas fa-users"></i>
                     <span>Daftar Instruktur</span>
                 </a>
             </li>
@@ -172,9 +172,11 @@
                                             <div class="mb-3">
                                                 <select class="form-control" name="kode_instruktur" id="kode_instruktur" required>
                                                     <option value="">-- Pilih Instruktur--</option>
-                                                    <option value="0">Saab</option>
-                                                    <option value="1">Mercedes</option>
-                                                    <option value="2">Audi</option>
+                                                    <?php foreach ($instruktur as $i) : ?>
+                                                        <option value="<?= $i['kode_instruktur']; ?>"><?= $i['nama_instruktur']; ?></option>
+                                                        <!-- <option value="1">Mercedes</option>
+                                                    <option value="2">Audi</option> -->
+                                                    <?php endforeach; ?>
                                                 </select>
                                             </div>
                                         </div>

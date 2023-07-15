@@ -177,10 +177,12 @@
 
                                             <div class="mb-3">
                                                 <select class="form-control" name="kode_instruktur" id="kode_instruktur" required>
-                                                    <option value="<?= $pelatihan['kode_instruktur']; ?>"><?= $pelatihan['kode_instruktur']; ?></option>
-                                                    <option value="0">Saab</option>
-                                                    <option value="1">Mercedes</option>
-                                                    <option value="2">Audi</option>
+                                                    <option value="<?= $pelatihan['kode_instruktur']; ?>"><?= $pelatihan['nama_instruktur']; ?></option>
+                                                    <?php foreach ($instruktur as $i) : ?>
+                                                        <option value="<?= $i['kode_instruktur']; ?>"><?= $i['nama_instruktur']; ?></option>
+                                                        <!-- <option value="1">Mercedes</option>
+                                                    <option value="2">Audi</option> -->
+                                                    <?php endforeach; ?>
                                                 </select>
                                             </div>
                                         </div>
