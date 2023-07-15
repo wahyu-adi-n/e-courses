@@ -137,7 +137,6 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800"><?= $header; ?></h1>
@@ -173,7 +172,10 @@
                                                         <td><?= $p['nama']; ?></td>
                                                         <td><?= $p['username']; ?></td>
                                                         <td><?= $p['email']; ?></td>
-                                                        <td>Ubah | Hapus</td>
+                                                        <td>
+                                                            <a href="/admin/peserta/edit/<?= $p['kode_user'] ?>" class="badge badge-success badgepill">Ubah</a>
+                                                            <a href="/admin/peserta/hapus/<?= $p['kode_user'] ?>" class="badge badge-danger badgepill" onclick="return confirm('Yakin menghapus user dengan kode: <?= $p['kode_user'] ?>?')">Hapus</a>
+                                                        </td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>

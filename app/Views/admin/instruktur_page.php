@@ -174,7 +174,10 @@
                                                         <td><?= $i['alamat']; ?></td>
                                                         <td><?= $i['email']; ?></td>
                                                         <td><?= $i['nohp']; ?></td>
-                                                        <td>Ubah | Hapus</td>
+                                                        <td>
+                                                            <a href="/admin/instruktur/edit/<?= $i['kode_instruktur'] ?>" class="badge badge-success badgepill">Ubah</a>
+                                                            <a href="/admin/instruktur/hapus/<?= $i['kode_instruktur'] ?>" class="badge badge-danger badgepill" onclick="return confirm('Yakin menghapus instruktur dengan kode: <?= $i['kode_instruktur'] ?>?')">Hapus</a>
+                                                        </td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>

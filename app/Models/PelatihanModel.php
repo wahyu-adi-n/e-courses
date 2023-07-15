@@ -22,11 +22,10 @@ class PelatihanModel extends Model
         return $this->db->query("SELECT * FROM $this->table WHERE kode_pelatihan = $id")->getRowArray();
     }
 
-
-    // public function deleteUserById($kode)
-    // {
-    //     return $this->db->query("DELETE FROM $this->table WHERE kode_user = '$kode'");
-    // }
+    public function deletePelatihan($id)
+    {
+        return $this->db->query("DELETE FROM $this->table WHERE kode_pelatihan = '$id'");
+    }
 
     public function getTotalPelatihan()
     {

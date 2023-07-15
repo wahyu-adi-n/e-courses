@@ -180,7 +180,10 @@
                                                         <td><?= $pe['lokasi']; ?></td>
                                                         <td><?= $pe['kode_instruktur']; ?></td>
                                                         <td>Daftar Peserta</td>
-                                                        <td>Ubah | Hapus</td>
+                                                        <td>
+                                                            <a href="/admin/pelatihan/edit/<?= $pe['kode_pelatihan'] ?>" class="badge badge-success badgepill">Ubah</a>
+                                                            <a href="/admin/pelatihan/hapus/<?= $pe['kode_pelatihan'] ?>" class="badge badge-danger badgepill" onclick="return confirm('Yakin menghapus pelatihan dengan kode: <?= $pe['kode_pelatihan']; ?>?')">Hapus</a>
+                                                        </td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>

@@ -42,9 +42,18 @@ $routes->post('/register', 'Home::registerProcess');
 # Halaman Admin
 $routes->get('/admin', 'Admin::index');
 $routes->get('/admin/dashboard', 'Admin::index');
+
 $routes->get('/admin/peserta', 'Admin::pesertaPage');
+$routes->get('/admin/peserta/hapus/(:num)', 'Admin::deletePeserta/$1');
+$routes->get('/admin/peserta/edit', 'Admin::editPesertaPage');
+
 $routes->get('/admin/pelatihan', 'Admin::pelatihanPage');
+$routes->get('/admin/pelatihan/hapus/(:num)', 'Admin::deletePelatihan/$1');
+$routes->get('/admin/pelatihan/edit', 'Admin::editPelatihanPage');
+
 $routes->get('/admin/instruktur', 'Admin::instrukturPage');
+$routes->get('/admin/instruktur/hapus/(:num)', 'Admin::deleteInstruktur/$1');
+$routes->get('/admin/instruktur/edit', 'Admin::editInstrukturPage');
 
 # Halaman Peserta
 $routes->get('/peserta', 'Peserta::index');

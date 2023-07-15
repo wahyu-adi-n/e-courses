@@ -18,11 +18,10 @@ class InstrukturModel extends Model
         return $this->db->query("SELECT * FROM $this->table WHERE kode_instruktur = $id")->getRowArray();
     }
 
-
-    // public function deleteUserById($kode)
-    // {
-    //     return $this->db->query("DELETE FROM $this->table WHERE kode_user = '$kode'");
-    // }
+    public function deleteInstruktur($id)
+    {
+        return $this->db->query("DELETE FROM $this->table WHERE kode_instruktur = '$id'");
+    }
 
     public function getTotalInstruktur()
     {
