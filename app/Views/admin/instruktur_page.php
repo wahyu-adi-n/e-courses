@@ -149,6 +149,7 @@
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Daftar Instruktur</h6>
+                                    <a href="/admin/instruktur/tambah" class="badge badge-primary badgepill mt-3">Tambah</a>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">

@@ -44,16 +44,22 @@ $routes->get('/admin', 'Admin::index');
 $routes->get('/admin/dashboard', 'Admin::index');
 
 $routes->get('/admin/peserta', 'Admin::pesertaPage');
+$routes->get('/admin/peserta/tambah', 'Admin::addPesertaPage');
+$routes->post('/admin/peserta/tambah', 'Admin::addPesertaProcess');
 $routes->get('/admin/peserta/hapus/(:num)', 'Admin::deletePeserta/$1');
-$routes->get('/admin/peserta/edit', 'Admin::editPesertaPage');
+$routes->get('/admin/peserta/edit/(:num)', 'Admin::editPesertaPage/$1');
 
 $routes->get('/admin/pelatihan', 'Admin::pelatihanPage');
+$routes->get('/admin/pelatihan/tambah', 'Admin::addPelatihanPage');
+$routes->post('/admin/pelatihan/tambah', 'Admin::addPelatihanProcess');
 $routes->get('/admin/pelatihan/hapus/(:num)', 'Admin::deletePelatihan/$1');
-$routes->get('/admin/pelatihan/edit', 'Admin::editPelatihanPage');
+$routes->get('/admin/pelatihan/edit/(:num)', 'Admin::editPelatihanPage/$1');
 
 $routes->get('/admin/instruktur', 'Admin::instrukturPage');
+$routes->get('/admin/instruktur/tambah', 'Admin::addInstrukturPage');
+$routes->post('/admin/instruktur/tambah', 'Admin::addInstrukturProcess');
 $routes->get('/admin/instruktur/hapus/(:num)', 'Admin::deleteInstruktur/$1');
-$routes->get('/admin/instruktur/edit', 'Admin::editInstrukturPage');
+$routes->get('/admin/instruktur/edit/(:num)', 'Admin::editInstrukturPage/$1');
 
 # Halaman Peserta
 $routes->get('/peserta', 'Peserta::index');

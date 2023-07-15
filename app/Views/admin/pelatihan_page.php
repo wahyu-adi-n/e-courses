@@ -151,6 +151,7 @@
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Daftar Pelatihan</h6>
+                                    <a href="/admin/pelatihan/tambah" class="badge badge-primary badgepill mt-3">Tambah</a>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
