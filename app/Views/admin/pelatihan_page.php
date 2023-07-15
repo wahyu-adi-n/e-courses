@@ -38,7 +38,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/dashboard') ? "active" : ""; ?>">
                 <a class="nav-link" href="/admin/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -48,7 +48,7 @@
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/peserta') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/admin/peserta">
                     <i class="fas fa-user"></i>
                     <span>Daftar User</span>
@@ -56,14 +56,15 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/pelatihan') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/admin/pelatihan">
                     <i class="fas fa-wrench"></i>
                     <span>Daftar Pelatihan</span>
                 </a>
             </li>
+
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/instruktur') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/admin/instruktur">
                     <i class="fas fa-wrench"></i>
                     <span>Daftar Instruktur</span>
@@ -159,7 +160,7 @@
                                                     <th>#</th>
                                                     <th>Nama Pelatihan</th>
                                                     <th>Deskripsi</th>
-                                                    <th>Waktu Pelaksanaan</th> <!-- Tgl Mulai, Tgl Selesai, Durasi dlm hari-->
+                                                    <th>Waktu Pelaksanaan</th>
                                                     <th>Lokasi</th>
                                                     <th>Instruktur</th>
                                                     <th>Peserta</th>
@@ -167,16 +168,21 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Delete | Update</td>
-                                                </tr>
+                                                <?php
+                                                $no = 1;
+                                                foreach ($pelatihan as $pe) :
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= $pe['nama_pelatihan']; ?></td>
+                                                        <td><?= $pe['deskripsi']; ?></td>
+                                                        <td><?= $pe['tgl_mulai']; ?> - <?= $pe['tgl_selesai']; ?></td>
+                                                        <td><?= $pe['lokasi']; ?></td>
+                                                        <td><?= $pe['kode_instruktur']; ?></td>
+                                                        <td>Daftar Peserta</td>
+                                                        <td>Ubah | Hapus</td>
+                                                    </tr>
+                                                <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>

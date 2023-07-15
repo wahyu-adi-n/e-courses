@@ -3,46 +3,71 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\UserModel;
+use App\Models\InstrukturModel;
+use App\Models\PelatihanModel;
 
 class Admin extends BaseController
 {
+
     public function index()
     {
-        $data = [
-            'title' => 'E-Course',
-            'header' => 'Halaman Dashboard',
+        $user = new  UserModel();
+        $instruktur = new  InstrukturModel();
+        $pelatihan = new  PelatihanModel();
 
-        ];
-        return view('admin/index_page', $data);
+        if (session()->get('nama') !== null) {
+            return view('/admin/index_page', [
+                'title' => 'E-Course',
+                'header' => 'Halaman Dashboard',
+                'total_user' => $user->getTotalUser(),
+                'total_instruktur' => $instruktur->getTotalInstruktur(),
+                'total_pelatihan' => $pelatihan->getTotalPelatihan(),
+            ]);
+        }
+        session()->setFlashdata('fail', 'Anda Belum Login!');
+        return redirect()->redirect("/");
     }
 
     public function pesertaPage()
     {
-        $data = [
-            'title' => 'E-Course',
-            'header' => 'Halaman Admin',
-
-        ];
-        return view('admin/peserta_page', $data);
+        $user = new  UserModel();
+        if (session()->get('nama') !== null) {
+            return view('admin/peserta_page', [
+                'title' => 'E-Course',
+                'header' => 'Halaman Peserta',
+                'peserta' => $user->getAllDataPeserta(),
+            ]);
+        }
+        session()->setFlashdata('fail', 'Anda Belum Login!');
+        return redirect()->redirect("/");
     }
 
     public function pelatihanPage()
     {
-        $data = [
-            'title' => 'E-Course',
-            'header' => 'Halaman Pelatihan',
-
-        ];
-        return view('admin/pelatihan_page', $data);
+        $pelatihan = new  PelatihanModel();
+        if (session()->get('nama') !== null) {
+            return view('admin/pelatihan_page', [
+                'title' => 'E-Course',
+                'header' => 'Halaman Pelatihan',
+                'pelatihan' => $pelatihan->getAllDataPelatihan(),
+            ]);
+        }
+        session()->setFlashdata('fail', 'Anda Belum Login!');
+        return redirect()->redirect("/");
     }
 
     public function instrukturPage()
     {
-        $data = [
-            'title' => 'E-Course',
-            'header' => 'Halaman Instruktur',
-
-        ];
-        return view('admin/instruktur_page', $data);
+        $instruktur = new  InstrukturModel();
+        if (session()->get('nama') !== null) {
+            return view('admin/instruktur_page', [
+                'title' => 'E-Course',
+                'header' => 'Halaman Instruktur',
+                'instruktur' => $instruktur->getAllDataInstruktur(),
+            ]);
+        }
+        session()->setFlashdata('fail', 'Anda Belum Login!');
+        return redirect()->redirect("/");
     }
 }

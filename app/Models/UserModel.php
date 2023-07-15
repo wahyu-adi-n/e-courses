@@ -8,12 +8,7 @@ class UserModel extends Model
 {
     protected $table = 'user';
     protected $primaryKey = 'kode_user';
-    protected $allowedFields = [
-        'nama',
-        'email',
-        'username',
-        'password',
-    ];
+    protected $allowedFields = ['nama', 'email', 'username', 'password',];
 
     public function login($email, $password)
     {
@@ -25,19 +20,13 @@ class UserModel extends Model
         return $this->db->query("SELECT * FROM $this->table WHERE email ='$email'")->getRowArray();
     }
 
-    // public function getAllDataStaff()
-    // {
-    //     return $this->db->query("SELECT * FROM $this->table WHERE level='staf'
-    //     ORDER BY id ASC ")->getResultArray();
-    // }
-
-    // public function getAllDataUsers($id = false)
-    // {
-    //     if ($id === false) {
-    //         return $this->db->query("SELECT * FROM $this->table ORDER BY id ASC ")->getResultArray();
-    //     }
-    //     return $this->db->query("SELECT * FROM $this->table WHERE id = $id")->getRowArray();
-    // }
+    public function getAllDataPeserta($id = false)
+    {
+        if ($id === false) {
+            return $this->db->query("SELECT * FROM $this->table ORDER BY kode_user ASC ")->getResultArray();
+        }
+        return $this->db->query("SELECT * FROM $this->table WHERE kode_user = $id")->getRowArray();
+    }
 
 
     // public function deleteUserById($kode)
@@ -45,10 +34,10 @@ class UserModel extends Model
     //     return $this->db->query("DELETE FROM $this->table WHERE kode_user = '$kode'");
     // }
 
-    // public function getTotalUser()
-    // {
-    //     return $this->db->query("SELECT * FROM $this->table")->getNumRows();
-    // }
+    public function getTotalUser()
+    {
+        return $this->db->query("SELECT * FROM $this->table")->getNumRows();
+    }
 
     // public function getUserByEmail($email)
     // {

@@ -9,12 +9,13 @@ class Home extends BaseController
 {
     public function login()
     {
-        $data = [
-            'title' => 'E-Course',
-            'header' => 'Halaman Login'
-
-        ];
-        return view('login_page', $data);
+        return view(
+            'login_page',
+            [
+                'title' => 'E-Course',
+                'header' => 'Halaman Login'
+            ]
+        );
     }
 
     public function loginProcess()
@@ -35,7 +36,7 @@ class Home extends BaseController
 
         if ($cek == 'NULL' || $cek == 'null' || $cek == null) {
             session()->setFlashdata('fail', 'Email atau Password Salah!');
-            return redirect()->redirect("/login");
+            return redirect()->redirect("/");
         } else {
             session()->set([
                 'nama' => $cek['nama'],
@@ -48,13 +49,10 @@ class Home extends BaseController
 
     public function register()
     {
-
-        $data = [
+        return view('register_page', [
             'title' => 'E-Course',
             'header' => 'Halaman Register'
-
-        ];
-        return view('register_page', $data);
+        ]);
     }
 
     public function registerProcess()
@@ -73,7 +71,7 @@ class Home extends BaseController
                 'password' => $this->request->getVar('password'),
             ]);
             session()->setFlashdata('success', 'Data User Berhasil Didaftarkan!');
-            return redirect()->redirect("/login");
+            return redirect()->redirect("/");
         } else {
             session()->setFlashdata('fail', 'Data User Sudah Terdaftar!');
             return redirect()->redirect("/register");
@@ -85,6 +83,6 @@ class Home extends BaseController
         $array_items = ['nama', 'email'];
         session()->remove($array_items);
         session()->setFlashdata('success', 'Anda Berhasil Logout!');
-        return redirect()->redirect("/login");
+        return redirect()->redirect("/");
     }
 }

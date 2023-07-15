@@ -8,29 +8,30 @@ class Instruktur extends BaseController
 {
     public function index()
     {
-        $data = [
-            'title' => 'E-Course',
-            'header' => 'Halaman Dashboard',
-        ];
-        return view('instruktur/index_page', $data);
+        if (session()->get('nama') !== null) {
+            return view('instruktur/index_page', [
+                'title' => 'E-Course',
+                'header' => 'Halaman Dashboard',
+            ]);
+        }
+        session()->setFlashdata('fail', 'Anda Belum Login!');
+        return redirect()->redirect('/');
     }
 
     public function viewCourse()
     {
-        $data = [
-            'title' => 'E-Course',
-            'header' => 'Halaman Lihat Pelatihan',
-        ];
-        return view('instruktur/pelatihan_page', $data);
+        if (session()->get('nama') !== null) {
+            return view('instruktur/pelatihan_page', [
+                'title' => 'E-Course',
+                'header' => 'Halaman Lihat Pelatihan',
+            ]);
+        }
+        session()->setFlashdata('fail', 'Anda Belum Login!');
+        return redirect()->redirect('/');
     }
 
     public function applyCourse()
     {
-        $data = [
-            'title' => 'E-Course',
-            'header' => 'Halaman Daftar Pelatihan',
-        ];
-        return view('instruktur/index_page', $data);
     }
 
     public function cancelCourse()
