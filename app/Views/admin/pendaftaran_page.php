@@ -201,8 +201,8 @@
                                                         </td>
                                                         <td width="20%">
                                                             <?php if ($pen['status_pendaftaran'] == 0) { ?>
-                                                                <a class="badge badge-success badgepill" href="/admin/pendaftaran/terima/<?= $pen['kode_pendaftaran'] ?>">Terima</a>
-                                                                <a class="badge badge-danger badgepill" href="/admin/pendaftaran/tolak/<?= $pen['kode_pendaftaran'] ?>">Tolak</a>
+                                                                <a class="badge badge-success badgepill" href="/admin/pendaftaran/terima/<?= $pen['id_pendaftaran'] ?>">Terima</a>
+                                                                <a class="badge badge-danger badgepill" href="/admin/pendaftaran/tolak/<?= $pen['id_pendaftaran'] ?>">Tolak</a>
 
                                                             <?php } else { ?>
                                                                 <p class="badge badge-info badgepill">Tidak ada</p>
