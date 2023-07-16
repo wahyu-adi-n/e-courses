@@ -103,15 +103,10 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="/peserta/edit_profile">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-
                                 <div class="dropdown-divider"></div>
                                 <form action="/logout" method="post" class="user">
                                     <div class="form-group">
@@ -148,10 +143,19 @@
 
                                 <div class="card-body">
                                     <?php
+                                    $status = "Tidak Diketahui";
+                                    foreach ($pendaftaran as $pen) {
+                                        if ($pen['status_pendaftaran'] == 0 || $pen['status_pendaftaran'] == 1) { #1 untuk diterima, 0 untuk menunggu konfirmasi
+                                            $status = 0;
+                                        }
+                                    }
+                                    ?>
+                                    <?php
                                     foreach ($pelatihan as $pe) {
                                     ?>
                                         <div class="card m-3">
                                             <div class="card-body mb-3">
+
                                                 <h5 class="text-dark"><?= $pe['nama_pelatihan']; ?></h5>
                                                 <p class="card-text"><?= $pe['deskripsi']; ?></p>
 
@@ -166,7 +170,8 @@
                                                         <p class="card-text">Intruktur: <?= $pe['nama_instruktur']; ?></p>
                                                     </div>
                                                 </div>
-                                                <a href="/peserta/pendaftaran/daftar/<?= $pe['kode_pelatihan']; ?>" class="btn btn-primary mt-3">Daftar Pelatihan</a>
+
+                                                <a href="/peserta/pendaftaran/daftar/<?= $pe['kode_pelatihan']; ?>" class="btn btn-primary mt-3 <?= ($status == 0) ? "disabled" : ""; ?>">Daftar Pelatihan</a>
                                             </div>
                                         </div>
                                     <?php } ?>

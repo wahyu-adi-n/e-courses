@@ -16,7 +16,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/thirdparty/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -33,11 +34,12 @@
                 <span><?= $title; ?></span>
             </a>
 
+
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/peserta/dashboard') ? "active" : ""; ?>">
                 <a class="nav-link" href="/peserta/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard User</span></a>
@@ -46,25 +48,23 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/peserta/pelatihan') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/peserta/pelatihan">
-                    <i class="fas fa-user"></i>
-                    <span>Daftar Pelatihan</span>
+                    <i class="fas fa-wrench"></i>
+                    <span>Data Pelatihan</span>
                 </a>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/peserta/pendaftaran') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/peserta/pendaftaran">
-                    <i class="fas fa-wrench"></i>
-                    <span>Daftar Pendaftaran</span>
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Data Pendaftaran</span>
                 </a>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
-
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -110,7 +110,6 @@
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-light btn-block" value="Logout">
                                     </div>
-
                                 </form>
 
                             </div>
@@ -127,48 +126,47 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800"><?= $header; ?></h1>
-
                     </div>
 
-                    <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-6 col-md-6 mb-3">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Total Pelatihan</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_pelatihan; ?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Area Chart -->
+                        <div class="col-xl-12 col-lg-12">
+                            <!-- DataTales Example -->
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-6 col-md-6 mb-3">
-                            <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Form Ubah Data Peserta</h6>
+                                </div>
                                 <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Total Pendaftaran</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_pendaftaran; ?></div>
+                                    <form class="user" action="/admin/peserta/edit/<?= $peserta['kode_user']; ?>" method="post">
+                                        <div class="form-group">
+                                            <div class="mb-3">
+                                                <input type="text" class="form-control" name="kode_user" id="kode_user" value="<?= $peserta['kode_user']; ?>" required readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="text" class="form-control" name="nama" id="nama" value="<?= $peserta['nama']; ?>" required placeholder="Ubah Nama Peserta">
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="email" class="form-control" name="email" id="email" value="<?= $peserta['email']; ?>" required placeholder="Ubah Email Peserta">
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="text" class="form-control" name="username" id="username" value="<?= $peserta['username']; ?>" required placeholder="Ubah Username Peserta">
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="password" class="form-control" name="password" id="password" value="<?= $peserta['password']; ?>" required placeholder="Ubah Password Peserta">
+                                            </div>
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-primary btn-user btn-block" value="Ubah Data Peserta">
                                         </div>
-                                    </div>
+                                        <hr>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -179,7 +177,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; <?= $title; ?></span>
+                        <span>Copyright &copy; <?= $title; ?> 2023</span>
                     </div>
                 </div>
             </footer>
@@ -212,6 +210,14 @@
     <!-- Page level custom scripts -->
     <script src="/js/demo/chart-area-demo.js"></script>
     <script src="/js/demo/chart-pie-demo.js"></script>
+
+
+    <!-- Page level plugins -->
+    <script src="/thirdparty/datatables/jquery.dataTables.min.js"></script>
+    <script src="/thirdparty/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/js/demo/datatables-demo.js"></script>
 
 </body>
 

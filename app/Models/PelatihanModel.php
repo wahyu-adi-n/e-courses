@@ -19,7 +19,6 @@ class PelatihanModel extends Model
         return $this->db->query("SELECT * FROM $this->table WHERE kode_pelatihan ='$id'")->getRowArray();
     }
 
-
     public function getAllDataPelatihan($id = false)
     {
         if ($id === false) {

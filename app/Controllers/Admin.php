@@ -13,13 +13,13 @@ class Admin extends BaseController
 
     public function index()
     {
-        $user = new  UserModel();
-        $instruktur = new  InstrukturModel();
-        $pelatihan = new  PelatihanModel();
-        $pendaftaran = new  PendaftaranModel();
-
         if (session()->get('nama') !== null) {
             if (session()->get('level') == 'admin') {
+                $user = new  UserModel();
+                $instruktur = new  InstrukturModel();
+                $pelatihan = new  PelatihanModel();
+                $pendaftaran = new  PendaftaranModel();
+
                 return view('/admin/index_page', [
                     'title' => 'E-Course',
                     'header' => 'Halaman Dashboard',
@@ -39,9 +39,9 @@ class Admin extends BaseController
 
     public function pesertaPage()
     {
-        $user = new  UserModel();
         if (session()->get('nama') !== null) {
             if (session()->get('level') == 'admin') {
+                $user = new  UserModel();
                 return view('admin/peserta_page', [
                     'title' => 'E-Course',
                     'header' => 'Halaman Peserta',
@@ -58,9 +58,9 @@ class Admin extends BaseController
 
     public function instrukturPage()
     {
-        $instruktur = new  InstrukturModel();
         if (session()->get('nama') !== null) {
             if (session()->get('level') == 'admin') {
+                $instruktur = new  InstrukturModel();
                 return view('admin/instruktur_page', [
                     'title' => 'E-Course',
                     'header' => 'Halaman Instruktur',
@@ -77,10 +77,9 @@ class Admin extends BaseController
 
     public function pelatihanPage()
     {
-        $pelatihan = new  PelatihanModel();
-
         if (session()->get('nama') !== null) {
             if (session()->get('level') == 'admin') {
+                $pelatihan = new  PelatihanModel();
                 return view('admin/pelatihan_page', [
                     'title' => 'E-Course',
                     'header' => 'Halaman Pelatihan',
@@ -97,9 +96,9 @@ class Admin extends BaseController
 
     public function pendaftaranPage()
     {
-        $pendaftaran = new  PendaftaranModel();
         if (session()->get('nama') !== null) {
             if (session()->get('level') == 'admin') {
+                $pendaftaran = new  PendaftaranModel();
                 return view('admin/pendaftaran_page', [
                     'title' => 'E-Course',
                     'header' => 'Halaman Pendaftaran',
@@ -190,8 +189,8 @@ class Admin extends BaseController
 
     public function addPelatihanPage()
     {
-        $instruktur = new InstrukturModel();
-        if (session()->get('nama') !== null && session()->get('level') == 'admin') {
+        if (session()->get('nama') !== null) {
+            $instruktur = new InstrukturModel();
             return view('admin/tambah_pelatihan_page', [
                 'title' => 'E-Course',
                 'header' => 'Halaman Tambah Pelatihan',
@@ -227,7 +226,6 @@ class Admin extends BaseController
     public function editPesertaPage($id)
     {
         $user = new UserModel();
-
         return view('admin/edit_peserta_page', [
             'title' => 'E-Course',
             'header' => 'Halaman Edit Peserta',

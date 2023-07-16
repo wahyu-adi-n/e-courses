@@ -37,10 +37,36 @@ class Peserta extends BaseController
         $pelatihan = new PelatihanModel();
         if (session()->get('nama') !== null) {
             if (session()->get('level') == 'user') {
+                $pendaftaran = new  PendaftaranModel();
+                $email = session()->get('email');
+
                 return view('peserta/pelatihan_page', [
                     'title' => 'E-Course',
                     'header' => 'Halaman Lihat Pelatihan',
                     'pelatihan' => $pelatihan->getAllDataPelatihan(),
+                    'pendaftaran' =>
+                    $pendaftaran->getDataPendaftaranByEmail($email),
+                ]);
+            } else {
+                session()->setFlashdata('gagal', 'Anda Tidak Bisa Mengakses Halaman Ini!');
+                return redirect()->redirect("/admin");
+            }
+        }
+        session()->setFlashdata('fail', 'Anda Belum Login!');
+        return redirect()->redirect('/');
+    }
+
+    public function editProfilePage()
+    {
+        if (session()->get('nama') !== null) {
+            if (session()->get('level') == 'user') {
+                $user = new UserModel();
+                $kode_user = session()->get('kode_user');
+                return view('peserta/edit_profile_page', [
+                    'title' => 'E-Course',
+                    'header' => 'Halaman Ubah Profil',
+                    'kode_user' => $kode_user,
+                    'peserta' => $user->getUserByID($kode_user),
                 ]);
             } else {
                 session()->setFlashdata('gagal', 'Anda Tidak Bisa Mengakses Halaman Ini!');

@@ -72,6 +72,8 @@ $routes->get('/admin/pendaftaran/tolak/(:num)', 'Admin::rejectPendaftaranProcess
 # Halaman Peserta
 $routes->get('/peserta', 'Peserta::index');
 $routes->get('/peserta/dashboard', 'Peserta::index');
+$routes->get('/peserta/edit_profile', 'Peserta::editProfilePage');
+$routes->post('/peserta/edit_profile', 'Peserta::editProfileProcess');
 $routes->get('/peserta/pelatihan', 'Peserta::viewCoursePage');
 $routes->get('/peserta/pendaftaran', 'Peserta::viewRegistrationPage');
 $routes->get('/peserta/pendaftaran/daftar/(:num)', 'Peserta::applyCourseProcess/$1');
