@@ -40,7 +40,7 @@
             <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/dashboard') ? "active" : ""; ?>">
                 <a class="nav-link" href="/admin/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Dashboard Admin</span></a>
             </li>
 
             <!-- Divider -->

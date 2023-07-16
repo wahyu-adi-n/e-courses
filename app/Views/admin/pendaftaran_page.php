@@ -193,8 +193,10 @@
                                                                 echo "<p class='text-success'>Diterima</p>";
                                                             } else if ($pen['status_pendaftaran'] == 2) {
                                                                 echo "<p class='text-danger'>Ditolak</p>";
-                                                            } else {
+                                                            } else if ($pen['status_pendaftaran'] == 0) {
                                                                 echo "<p class='text-info'>Menunggu Konfirmasi</p>";
+                                                            } else if ($pen['status_pendaftaran'] == -1) {
+                                                                echo "<p class='text-info'>Membatalkan Pendaftaran</p>";
                                                             } ?>
                                                         </td>
                                                         <td width="20%">

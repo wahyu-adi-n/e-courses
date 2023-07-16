@@ -34,43 +34,38 @@
                 <span><?= $title; ?></span>
             </a>
 
+
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/admin/dashboard">
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/peserta/dashboard') ? "active" : ""; ?>">
+                <a class="nav-link" href="/peserta/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Dashboard User</span></a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/admin/peserta">
-                    <i class="fas fa-user"></i>
-                    <span>Data User</span>
-                </a>
-            </li>
-
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/admin/pelatihan">
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/peserta/pelatihan') ? "active" : ""; ?>">
+                <a class="nav-link collapsed" href="/peserta/pelatihan">
                     <i class="fas fa-wrench"></i>
                     <span>Data Pelatihan</span>
                 </a>
             </li>
+
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/admin/instruktur">
-                    <i class="fas fa-users"></i>
-                    <span>Data Instruktur</span>
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/peserta/pendaftaran') ? "active" : ""; ?>">
+                <a class="nav-link collapsed" href="/peserta/pendaftaran">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Data Pendaftaran</span>
                 </a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
+
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -122,7 +117,6 @@
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-light btn-block" value="Logout">
                                     </div>
-
                                 </form>
 
                             </div>
@@ -151,35 +145,31 @@
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Data Pelatihan</h6>
                                 </div>
+
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Nama Pelatihan</th>
-                                                    <th>Deskripsi</th>
-                                                    <th>Waktu Pelaksanaan</th> <!-- Tgl Mulai, Tgl Selesai, Durasi dlm hari-->
-                                                    <th>Lokasi</th>
-                                                    <th>Instruktur</th>
-                                                    <th>Peserta</th>
-                                                    <th>Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Delete | Update</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    <?php
+                                    foreach ($pelatihan as $pe) {
+                                    ?>
+                                        <div class="card m-3">
+                                            <div class="card-body mb-3">
+                                                <h5 class="text-dark"><?= $pe['nama_pelatihan']; ?></h5>
+                                                <p class="card-text"><?= $pe['deskripsi']; ?></p>
+
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <p class="card-text">Waktu: <?= $pe['tgl_mulai']; ?> - <?= $pe['tgl_selesai']; ?></p>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <p class="card-text">Lokasi: <?= $pe['lokasi']; ?></p>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <p class="card-text">Intruktur: <?= $pe['nama_instruktur']; ?></p>
+                                                    </div>
+                                                </div>
+                                                <a href="/peserta/daftar/<?= $pe['kode_pelatihan']; ?>" class="btn btn-primary mt-3">Daftar Pelatihan</a>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

@@ -30,7 +30,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand " href="/admin">
+            <a class="sidebar-brand " href="/peserta">
                 <span><?= $title; ?></span>
             </a>
 
@@ -38,39 +38,30 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/admin/dashboard">
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/peserta/dashboard') ? "active" : ""; ?>">
+                <a class="nav-link" href="/peserta/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Dashboard User</span></a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/admin/peserta">
-                    <i class="fas fa-user"></i>
-                    <span>Data User</span>
-                </a>
-            </li>
-
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/admin/pelatihan">
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/peserta/pelatihan') ? "active" : ""; ?>">
+                <a class="nav-link collapsed" href="/peserta/pelatihan">
                     <i class="fas fa-wrench"></i>
                     <span>Data Pelatihan</span>
                 </a>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/admin/instruktur">
-                    <i class="fas fa-users"></i>
-                    <span>Data Instruktur</span>
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/peserta/pendaftaran') ? "active" : ""; ?>">
+                <a class="nav-link collapsed" href="/peserta/pendaftaran">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Data Pendaftaran</span>
                 </a>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -110,14 +101,14 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <!-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
-                                </a>
+                                </a> -->
 
                                 <div class="dropdown-divider"></div>
                                 <form action="/logout" method="post" class="user">
@@ -138,19 +129,20 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800"><?= $header; ?></h1>
                     </div>
 
                     <div class="row">
+
                         <!-- Area Chart -->
                         <div class="col-xl-12 col-lg-12">
                             <!-- DataTales Example -->
+
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Data User</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Data Pendaftaran</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -158,20 +150,47 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Nama</th>
-                                                    <th>Username</th>
-                                                    <th>Email</th>
+                                                    <th>Kode Pendaftaran</th>
+                                                    <th>Pendaftar</th> <!-- nama, email -->
+                                                    <th>Pelatihan</th> <!-- nama, waktu, lokasi -->
+                                                    <th>Status Pendaftaran</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
-                                                </tr>
+                                                <?php
+                                                $no = 1;
+                                                foreach ($pendaftaran as $pen) :
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= $pen['kode_pendaftaran']; ?></td>
+                                                        <td><?= $pen['nama']; ?><br>
+                                                            <?= $pen['email']; ?></td>
+                                                        <td>
+                                                            <?= $pen['nama_pelatihan']; ?><br>
+                                                            (<?= $pen['tgl_mulai']; ?> - <?= $pen['tgl_selesai']; ?>) <br>
+                                                            <?= $pen['lokasi']; ?>
+                                                        </td>
+                                                        <td><?php
+                                                            if ($pen['status_pendaftaran'] == 1) {
+                                                                echo "<p class='text-success'>Diterima</p>";
+                                                            } else if ($pen['status_pendaftaran'] == 2) {
+                                                                echo "<p class='text-danger'>Ditolak</p>";
+                                                            } else {
+                                                                echo "<p class='text-info'>Menunggu Konfirmasi</p>";
+                                                            } ?>
+                                                        </td>
+                                                        <td width="20%">
+                                                            <?php if ($pen['status_pendaftaran'] == 1) { ?>
+                                                                <a class="badge badge-success badgepill" href="/peserta/pendaftaran/unduh/<?= $pen['kode_pendaftaran'] ?>">Download Bukti Pendaftaran</a>
+                                                            <?php } else { ?>
+                                                                <p class="badge badge-info badgepill">Tidak ada</p>
+                                                            <?php } ?>
+
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -179,6 +198,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -222,6 +242,7 @@
     <!-- Page level custom scripts -->
     <script src="/js/demo/chart-area-demo.js"></script>
     <script src="/js/demo/chart-pie-demo.js"></script>
+
 
     <!-- Page level plugins -->
     <script src="/thirdparty/datatables/jquery.dataTables.min.js"></script>

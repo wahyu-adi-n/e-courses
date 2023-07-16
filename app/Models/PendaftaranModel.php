@@ -7,10 +7,9 @@ use CodeIgniter\Model;
 class PendaftaranModel extends Model
 {
     protected $table = 'pendaftaran';
-    protected $primaryKey = 'kode_pendaftaran';
+    protected $primaryKey = 'id_pendaftaran';
     protected $allowedFields = [
-        'kode_pendaftaran', 'kode_pelatihan', 'kode_user', 'tgl_mulai_pendaftaran',
-        'tgl_selesai_pendaftaran', 'status_pendaftaran'
+        'kode_pendaftaran', 'kode_pelatihan', 'kode_user', 'status_pendaftaran'
     ];
 
 
@@ -33,13 +32,17 @@ class PendaftaranModel extends Model
         return $this->db->query("DELETE FROM $this->table WHERE kode_pelatihan = '$id'");
     }
 
+    public function getDataPendaftaranByEmail($email)
+    {
+        return $this->db->query("SELECT * FROM $this->table LEFT JOIN pelatihan ON $this->table.kode_pelatihan = pelatihan.kode_pelatihan LEFT JOIN user ON $this->table.kode_user = user.kode_user WHERE email = '$email'")->getResultArray();
+    }
+
     public function getTotalPendaftaran()
     {
         return $this->db->query("SELECT * FROM $this->table")->getNumRows();
     }
-
-    public function getPendaftaranByID($id)
+    public function getTotalPendaftaranByKodeUser($kode_user)
     {
-        return $this->db->query("SELECT * FROM $this->table LEFT JOIN instruktur ON $this->table.kode_instruktur = instruktur.kode_instruktur WHERE kode_pelatihan = '$id'")->getRowArray();
+        return $this->db->query("SELECT * FROM $this->table WHERE kode_user=$kode_user")->getNumRows();
     }
 }

@@ -30,6 +30,7 @@ class Home extends BaseController
             session()->set([
                 'nama' => "Administrator",
                 'email' => $email,
+                'level' => 'admin',
             ]);
             return redirect()->redirect("/admin");
         }
@@ -39,8 +40,10 @@ class Home extends BaseController
             return redirect()->redirect("/");
         } else {
             session()->set([
+                'kode_user' => $cek['kode_user'],
                 'nama' => $cek['nama'],
                 'email' => $cek['email'],
+                'level' => 'user',
             ]);
             session()->setFlashdata('success', 'Anda Berhasil Login!');
             return redirect()->redirect("/peserta");

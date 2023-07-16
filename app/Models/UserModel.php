@@ -42,4 +42,9 @@ class UserModel extends Model
     {
         return $this->db->query("SELECT * FROM $this->table WHERE kode_user = '$id'")->getRowArray();
     }
+
+    public function getUserByEmail($email)
+    {
+        return $this->db->query("SELECT kode_user FROM $this->table WHERE email = '$email'")->getRowArray();
+    }
 }
