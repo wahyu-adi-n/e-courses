@@ -158,8 +158,7 @@
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Data Pelatihan</h6>
-                                    <a href="/admin/pelatihan/tambah" class="badge badge-primary badgepill mt-3">Tambah</a>
+                                    <h6 class="m-0 font-weight-bold text-primary">Data Pendaftaran</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -167,33 +166,46 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Nama Pelatihan</th>
-                                                    <th>Deskripsi</th>
-                                                    <th>Waktu Pelaksanaan</th>
-                                                    <th>Lokasi</th>
-                                                    <th>Instruktur</th>
-                                                    <th>Peserta</th>
+                                                    <th>Kode Pendaftaran</th>
+                                                    <th>Pendaftar</th> <!-- nama, email -->
+                                                    <th>Pelatihan</th> <!-- nama, waktu, lokasi -->
+                                                    <th>Status Pendaftaran</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
                                                 $no = 1;
-                                                foreach ($pelatihan as $pe) :
+                                                foreach ($pendaftaran as $pen) :
                                                 ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
-                                                        <td><?= $pe['nama_pelatihan']; ?></td>
-                                                        <td><?= $pe['deskripsi']; ?></td>
-                                                        <td><?= $pe['tgl_mulai']; ?> - <?= $pe['tgl_selesai']; ?></td>
-                                                        <td><?= $pe['lokasi']; ?></td>
-                                                        <td><?= $pe['nama_instruktur']; ?>
-                                                            <?= $pe['email']; ?><br>
-                                                        </td>
-                                                        <td>Data Peserta</td>
+                                                        <td><?= $pen['kode_pendaftaran']; ?></td>
+                                                        <td><?= $pen['nama']; ?><br>
+                                                            <?= $pen['email']; ?></td>
                                                         <td>
-                                                            <a href="/admin/pelatihan/edit/<?= $pe['kode_pelatihan'] ?>" class="badge badge-success badgepill">Ubah</a>
-                                                            <a href="/admin/pelatihan/hapus/<?= $pe['kode_pelatihan'] ?>" class="badge badge-danger badgepill" onclick="return confirm('Yakin menghapus pelatihan dengan kode: <?= $pe['kode_pelatihan']; ?>?')">Hapus</a>
+                                                            <?= $pen['nama_pelatihan']; ?><br>
+                                                            (<?= $pen['tgl_mulai']; ?> - <?= $pen['tgl_selesai']; ?>) <br>
+                                                            <?= $pen['lokasi']; ?>
+                                                        </td>
+                                                        <td><?php
+                                                            if ($pen['status_pendaftaran'] == 1) {
+                                                                echo "<p class='text-success'>Diterima</p>";
+                                                            } else if ($pen['status_pendaftaran'] == 2) {
+                                                                echo "<p class='text-danger'>Ditolak</p>";
+                                                            } else {
+                                                                echo "<p class='text-info'>Menunggu Konfirmasi</p>";
+                                                            } ?>
+                                                        </td>
+                                                        <td width="20%">
+                                                            <?php if ($pen['status_pendaftaran'] == 0) { ?>
+                                                                <a class="badge badge-success badgepill" href="/admin/pendaftaran/terima/<?= $pen['kode_pendaftaran'] ?>">Terima</a>
+                                                                <a class="badge badge-danger badgepill" href="/admin/pendaftaran/tolak/<?= $pen['kode_pendaftaran'] ?>">Tolak</a>
+
+                                                            <?php } else { ?>
+                                                                <p class="badge badge-info badgepill">Tidak ada</p>
+                                                            <?php } ?>
+
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>

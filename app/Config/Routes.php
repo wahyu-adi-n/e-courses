@@ -50,6 +50,13 @@ $routes->get('/admin/peserta/hapus/(:num)', 'Admin::deletePeserta/$1');
 $routes->get('/admin/peserta/edit/(:num)', 'Admin::editPesertaPage/$1');
 $routes->post('/admin/peserta/edit/(:num)', 'Admin::updatePesertaProcess/$1');
 
+$routes->get('/admin/instruktur', 'Admin::instrukturPage');
+$routes->get('/admin/instruktur/tambah', 'Admin::addInstrukturPage');
+$routes->post('/admin/instruktur/tambah', 'Admin::addInstrukturProcess');
+$routes->get('/admin/instruktur/hapus/(:num)', 'Admin::deleteInstruktur/$1');
+$routes->get('/admin/instruktur/edit/(:num)', 'Admin::editInstrukturPage/$1');
+$routes->post('/admin/instruktur/edit/(:num)', 'Admin::updateInstrukturProcess/$1');
+
 $routes->get('/admin/pelatihan', 'Admin::pelatihanPage');
 $routes->get('/admin/pelatihan/tambah', 'Admin::addPelatihanPage');
 $routes->post('/admin/pelatihan/tambah', 'Admin::addPelatihanProcess');
@@ -57,12 +64,10 @@ $routes->get('/admin/pelatihan/hapus/(:num)', 'Admin::deletePelatihan/$1');
 $routes->get('/admin/pelatihan/edit/(:num)', 'Admin::editPelatihanPage/$1');
 $routes->post('/admin/pelatihan/edit/(:num)', 'Admin::updatePelatihanProcess/$1');
 
-$routes->get('/admin/instruktur', 'Admin::instrukturPage');
-$routes->get('/admin/instruktur/tambah', 'Admin::addInstrukturPage');
-$routes->post('/admin/instruktur/tambah', 'Admin::addInstrukturProcess');
-$routes->get('/admin/instruktur/hapus/(:num)', 'Admin::deleteInstruktur/$1');
-$routes->get('/admin/instruktur/edit/(:num)', 'Admin::editInstrukturPage/$1');
-$routes->post('/admin/instruktur/edit/(:num)', 'Admin::updateInstrukturProcess/$1');
+$routes->get('/admin/pendaftaran', 'Admin::pendaftaranPage');
+$routes->get('/admin/pendaftaran/terima/(:num)', 'Admin::approvePendaftaranProcess/$1');
+$routes->get('/admin/pendaftaran/tolak/(:num)', 'Admin::rejectPendaftaranProcess/$1');
+
 
 # Halaman Peserta
 $routes->get('/peserta', 'Peserta::index');

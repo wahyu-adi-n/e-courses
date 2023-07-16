@@ -45,21 +45,21 @@
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/pelatihan') ? "active" : ""; ?>">
-                <a class="nav-link collapsed" href="/admin/pelatihan">
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/peserta') ? "active" : ""; ?>">
+                <a class="nav-link collapsed" href="/admin/peserta">
                     <i class="fas fa-user"></i>
                     <span>Data User</span>
                 </a>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/pelatihan') ? "active" : ""; ?>">
-                <a class="nav-link collapsed" href="/admin/pelatihan">
-                    <i class="fas fa-wrench"></i>
-                    <span>Data Pelatihan</span>
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/instruktur') ? "active" : ""; ?>">
+                <a class="nav-link collapsed" href="/admin/instruktur">
+                    <i class="fas fa-users"></i>
+                    <span>Data Instruktur</span>
                 </a>
             </li>
 
@@ -68,6 +68,14 @@
                 <a class="nav-link collapsed" href="/admin/pelatihan">
                     <i class="fas fa-wrench"></i>
                     <span>Data Pelatihan</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/pendaftaran') ? "active" : ""; ?>">
+                <a class="nav-link collapsed" href="/admin/pendaftaran">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Data Pendaftaran</span>
                 </a>
             </li>
             <!-- Divider -->

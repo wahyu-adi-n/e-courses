@@ -16,6 +16,7 @@ class Admin extends BaseController
         $user = new  UserModel();
         $instruktur = new  InstrukturModel();
         $pelatihan = new  PelatihanModel();
+        $pendaftaran = new  PendaftaranModel();
 
         if (session()->get('nama') !== null) {
             return view('/admin/index_page', [
@@ -24,6 +25,7 @@ class Admin extends BaseController
                 'total_user' => $user->getTotalUser(),
                 'total_instruktur' => $instruktur->getTotalInstruktur(),
                 'total_pelatihan' => $pelatihan->getTotalPelatihan(),
+                'total_pendaftaran' => $pendaftaran->getTotalPendaftaran(),
             ]);
         }
         session()->setFlashdata('fail', 'Anda Belum Login!');
@@ -38,6 +40,20 @@ class Admin extends BaseController
                 'title' => 'E-Course',
                 'header' => 'Halaman Peserta',
                 'peserta' => $user->getAllDataPeserta(),
+            ]);
+        }
+        session()->setFlashdata('fail', 'Anda Belum Login!');
+        return redirect()->redirect("/");
+    }
+
+    public function instrukturPage()
+    {
+        $instruktur = new  InstrukturModel();
+        if (session()->get('nama') !== null) {
+            return view('admin/instruktur_page', [
+                'title' => 'E-Course',
+                'header' => 'Halaman Instruktur',
+                'instruktur' => $instruktur->getAllDataInstruktur(),
             ]);
         }
         session()->setFlashdata('fail', 'Anda Belum Login!');
@@ -59,14 +75,14 @@ class Admin extends BaseController
         return redirect()->redirect("/");
     }
 
-    public function instrukturPage()
+    public function pendaftaranPage()
     {
-        $instruktur = new  InstrukturModel();
+        $pendaftaran = new  PendaftaranModel();
         if (session()->get('nama') !== null) {
-            return view('admin/instruktur_page', [
+            return view('admin/pendaftaran_page', [
                 'title' => 'E-Course',
-                'header' => 'Halaman Instruktur',
-                'instruktur' => $instruktur->getAllDataInstruktur(),
+                'header' => 'Halaman Pendaftaran',
+                'pendaftaran' => $pendaftaran->getAllDataPendaftaran(),
             ]);
         }
         session()->setFlashdata('fail', 'Anda Belum Login!');
@@ -176,7 +192,6 @@ class Admin extends BaseController
     public function editPesertaPage($id)
     {
         $user = new UserModel();
-        // var_dump($user->getUserByID($id));
 
         return view('admin/edit_peserta_page', [
             'title' => 'E-Course',
@@ -250,6 +265,27 @@ class Admin extends BaseController
         ]);
         return redirect()->redirect("/admin/pelatihan");
     }
+
+    public function approvePendaftaranProcess($id)
+    {
+        $pendaftaran = new PendaftaranModel();
+        $pendaftaran->save([
+            'kode_pendaftaran' => $id,
+            'status_pendaftaran' => 1,
+        ]);
+        return redirect()->redirect("/admin/pendaftaran");
+    }
+
+    public function rejectPendaftaranProcess($id)
+    {
+        $pendaftaran = new PendaftaranModel();
+        $pendaftaran->save([
+            'kode_pendaftaran' => $id,
+            'status_pendaftaran' => 2,
+        ]);
+        return redirect()->redirect("/admin/pendaftaran");
+    }
+
 
 
     public function deletePeserta($id)

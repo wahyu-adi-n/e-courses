@@ -55,6 +55,14 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/instruktur') ? "active" : ""; ?>">
+                <a class="nav-link collapsed" href="/admin/instruktur">
+                    <i class="fas fa-users"></i>
+                    <span>Data Instruktur</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/pelatihan') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/admin/pelatihan">
                     <i class="fas fa-wrench"></i>
@@ -63,12 +71,13 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/instruktur') ? "active" : ""; ?>">
-                <a class="nav-link collapsed" href="/admin/instruktur">
-                    <i class="fas fa-users"></i>
-                    <span>Data Instruktur</span>
+            <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/pendaftaran') ? "active" : ""; ?>">
+                <a class="nav-link collapsed" href="/admin/pendaftaran">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Data Pendaftaran</span>
                 </a>
             </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -142,9 +151,8 @@
 
                     <!-- Content Row -->
                     <div class="row">
-
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-4 col-md-4 mb-4">
+                        <div class="col-xl-3 col-md-3 mb-3">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -162,7 +170,7 @@
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-4 col-md-4 mb-4">
+                        <div class="col-xl-3 col-md-3 mb-3">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -180,7 +188,7 @@
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-4 col-md-4 mb-4">
+                        <div class="col-xl-3 col-md-3 mb-3">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -194,12 +202,30 @@
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                            <i class="fas fa-wrench fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-xl-3 col-md-3 mb-3">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Total Pendaftaran</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_pendaftaran; ?></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
