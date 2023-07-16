@@ -88,7 +88,7 @@ class Peserta extends BaseController
     {
         $pendaftaran = new PendaftaranModel();
         $pendaftaran->save([
-            'kode_pendaftaran' => $id,
+            'id_pendaftaran' => $id,
             'status_pendaftaran' => -1,
         ]);
         return redirect()->redirect("/peserta/pendaftaran");

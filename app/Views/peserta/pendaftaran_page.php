@@ -177,13 +177,17 @@
                                                                 echo "<p class='text-success'>Diterima</p>";
                                                             } else if ($pen['status_pendaftaran'] == 2) {
                                                                 echo "<p class='text-danger'>Ditolak</p>";
-                                                            } else {
+                                                            } else if ($pen['status_pendaftaran'] == 0) {
                                                                 echo "<p class='text-info'>Menunggu Konfirmasi</p>";
+                                                            } else if ($pen['status_pendaftaran'] == -1) {
+                                                                echo "<p class='text-danger'>Dibatalkan</p>";
                                                             } ?>
                                                         </td>
                                                         <td width="20%">
                                                             <?php if ($pen['status_pendaftaran'] == 1) { ?>
                                                                 <a class="badge badge-success badgepill" href="/peserta/pendaftaran/unduh/<?= $pen['kode_pendaftaran'] ?>">Download Bukti Pendaftaran</a>
+                                                            <?php } else if ($pen['status_pendaftaran'] == 0) { ?>
+                                                                <a class="badge badge-danger badgepill" href="/peserta/pendaftaran/batal/<?= $pen['id_pendaftaran'] ?>">Batalkan Pendaftaran</a>
                                                             <?php } else { ?>
                                                                 <p class="badge badge-info badgepill">Tidak ada</p>
                                                             <?php } ?>

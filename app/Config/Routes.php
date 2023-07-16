@@ -74,8 +74,9 @@ $routes->get('/peserta', 'Peserta::index');
 $routes->get('/peserta/dashboard', 'Peserta::index');
 $routes->get('/peserta/pelatihan', 'Peserta::viewCoursePage');
 $routes->get('/peserta/pendaftaran', 'Peserta::viewRegistrationPage');
-$routes->get('/peserta/daftar/(:num)', 'Peserta::applyCourseProcess/$1');
-$routes->get('/peserta/batal/(:num)', 'Peserta::cancelApplyCourseProcess/$1');
+$routes->get('/peserta/pendaftaran/daftar/(:num)', 'Peserta::applyCourseProcess/$1');
+$routes->get('/peserta/pendaftaran/batal/(:num)', 'Peserta::cancelApplyCourseProcess/$1');
+$routes->get('/peserta/pendaftaran/unduh/(:num)', 'Peserta::downloadBuktiPendaftaranProcess/$1');
 
 # Halaman Instruktur
 $routes->get('/Instruktur', 'Instruktur::index');

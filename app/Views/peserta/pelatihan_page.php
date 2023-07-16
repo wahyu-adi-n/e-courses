@@ -166,7 +166,7 @@
                                                         <p class="card-text">Intruktur: <?= $pe['nama_instruktur']; ?></p>
                                                     </div>
                                                 </div>
-                                                <a href="/peserta/daftar/<?= $pe['kode_pelatihan']; ?>" class="btn btn-primary mt-3">Daftar Pelatihan</a>
+                                                <a href="/peserta/pendaftaran/daftar/<?= $pe['kode_pelatihan']; ?>" class="btn btn-primary mt-3">Daftar Pelatihan</a>
                                             </div>
                                         </div>
                                     <?php } ?>
