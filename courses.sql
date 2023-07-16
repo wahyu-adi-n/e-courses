@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Jul 2023 pada 07.15
+-- Waktu pembuatan: 16 Jul 2023 pada 11.57
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.2.0
 
@@ -74,6 +74,7 @@ INSERT INTO `pelatihan` (`kode_pelatihan`, `nama_pelatihan`, `deskripsi`, `tgl_m
 --
 
 CREATE TABLE `pendaftaran` (
+  `id_pendaftaran` int(11) NOT NULL,
   `kode_pendaftaran` varchar(15) NOT NULL,
   `kode_pelatihan` int(15) NOT NULL,
   `kode_user` int(15) NOT NULL,
@@ -84,8 +85,12 @@ CREATE TABLE `pendaftaran` (
 -- Dumping data untuk tabel `pendaftaran`
 --
 
-INSERT INTO `pendaftaran` (`kode_pendaftaran`, `kode_pelatihan`, `kode_user`, `status_pendaftaran`) VALUES
-('126332190', 2, 1, 2);
+INSERT INTO `pendaftaran` (`id_pendaftaran`, `kode_pendaftaran`, `kode_pelatihan`, `kode_user`, `status_pendaftaran`) VALUES
+(1, '111111112', 7, 1, 1),
+(2, '126332190', 2, 1, 2),
+(3, '7432121', 7, 8, 0),
+(4, '44517925', 2, 1, 0),
+(5, '74196234', 2, 8, 0);
 
 -- --------------------------------------------------------
 
@@ -129,7 +134,7 @@ ALTER TABLE `pelatihan`
 -- Indeks untuk tabel `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
-  ADD PRIMARY KEY (`kode_pendaftaran`);
+  ADD PRIMARY KEY (`id_pendaftaran`);
 
 --
 -- Indeks untuk tabel `user`
@@ -152,6 +157,12 @@ ALTER TABLE `instruktur`
 --
 ALTER TABLE `pelatihan`
   MODIFY `kode_pelatihan` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `pendaftaran`
+--
+ALTER TABLE `pendaftaran`
+  MODIFY `id_pendaftaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
