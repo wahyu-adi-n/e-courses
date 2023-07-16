@@ -51,7 +51,7 @@
             <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/peserta') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/admin/peserta">
                     <i class="fas fa-user"></i>
-                    <span>Daftar User</span>
+                    <span>Data User</span>
                 </a>
             </li>
 
@@ -59,7 +59,7 @@
             <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/pelatihan') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/admin/pelatihan">
                     <i class="fas fa-wrench"></i>
-                    <span>Daftar Pelatihan</span>
+                    <span><Datal></Datal> Pelatihan</span>
                 </a>
             </li>
 
@@ -67,7 +67,7 @@
             <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/instruktur') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/admin/instruktur">
                     <i class="fas fa-users"></i>
-                    <span>Daftar Instruktur</span>
+                    <span><Datal></Datal> Instruktur</span>
                 </a>
             </li>
             <!-- Divider -->
@@ -148,7 +148,7 @@
                             <!-- DataTales Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Daftar Instruktur</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Data Instruktur</h6>
                                     <a href="/admin/instruktur/tambah" class="badge badge-primary badgepill mt-3">Tambah</a>
                                 </div>
                                 <div class="card-body">

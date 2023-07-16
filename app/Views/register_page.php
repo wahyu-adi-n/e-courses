@@ -59,7 +59,7 @@
                             <hr>
 
                             <div class="text-center">
-                                <p class="small">Sudah punya akun? <a href="/login">Login sini</a></p>
+                                <p class="small">Sudah punya akun? <a href="/login">Login</a></p>
                             </div>
                         </div>
 

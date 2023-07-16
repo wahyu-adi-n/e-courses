@@ -43,7 +43,7 @@ class Home extends BaseController
                 'email' => $cek['email'],
             ]);
             session()->setFlashdata('success', 'Anda Berhasil Login!');
-            return "Homepage";
+            return redirect()->redirect("/peserta");
         }
     }
 

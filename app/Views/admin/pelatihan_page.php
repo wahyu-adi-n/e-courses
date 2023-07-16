@@ -51,7 +51,7 @@
             <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/peserta') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/admin/peserta">
                     <i class="fas fa-user"></i>
-                    <span>Daftar User</span>
+                    <span>Data User</span>
                 </a>
             </li>
 
@@ -59,7 +59,7 @@
             <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/pelatihan') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/admin/pelatihan">
                     <i class="fas fa-wrench"></i>
-                    <span>Daftar Pelatihan</span>
+                    <span>Data Pelatihan</span>
                 </a>
             </li>
 
@@ -67,7 +67,7 @@
             <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/instruktur') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/admin/instruktur">
                     <i class="fas fa-users"></i>
-                    <span>Daftar Instruktur</span>
+                    <span>Data Instruktur</span>
                 </a>
             </li>
             <!-- Divider -->
@@ -150,7 +150,7 @@
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Daftar Pelatihan</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Data Pelatihan</h6>
                                     <a href="/admin/pelatihan/tambah" class="badge badge-primary badgepill mt-3">Tambah</a>
                                 </div>
                                 <div class="card-body">
@@ -182,7 +182,7 @@
                                                         <td><?= $pe['nama_instruktur']; ?>
                                                             <?= $pe['email']; ?><br>
                                                         </td>
-                                                        <td>Daftar Peserta</td>
+                                                        <td>Data Peserta</td>
                                                         <td>
                                                             <a href="/admin/pelatihan/edit/<?= $pe['kode_pelatihan'] ?>" class="badge badge-success badgepill">Ubah</a>
                                                             <a href="/admin/pelatihan/hapus/<?= $pe['kode_pelatihan'] ?>" class="badge badge-danger badgepill" onclick="return confirm('Yakin menghapus pelatihan dengan kode: <?= $pe['kode_pelatihan']; ?>?')">Hapus</a>

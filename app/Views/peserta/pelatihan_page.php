@@ -51,7 +51,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/admin/peserta">
                     <i class="fas fa-user"></i>
-                    <span>Daftar User</span>
+                    <span>Data User</span>
                 </a>
             </li>
 
@@ -59,14 +59,14 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/admin/pelatihan">
                     <i class="fas fa-wrench"></i>
-                    <span>Daftar Pelatihan</span>
+                    <span>Data Pelatihan</span>
                 </a>
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/admin/instruktur">
                     <i class="fas fa-users"></i>
-                    <span>Daftar Instruktur</span>
+                    <span>Data Instruktur</span>
                 </a>
             </li>
             <!-- Divider -->
@@ -149,7 +149,7 @@
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Daftar Pelatihan</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Data Pelatihan</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">

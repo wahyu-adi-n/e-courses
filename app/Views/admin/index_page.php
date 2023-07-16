@@ -50,7 +50,7 @@
             <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/peserta') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/admin/peserta">
                     <i class="fas fa-user"></i>
-                    <span>Daftar User</span>
+                    <span>Data User</span>
                 </a>
             </li>
 
@@ -58,7 +58,7 @@
             <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/pelatihan') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/admin/pelatihan">
                     <i class="fas fa-wrench"></i>
-                    <span>Daftar Pelatihan</span>
+                    <span>Data Pelatihan</span>
                 </a>
             </li>
 
@@ -66,7 +66,7 @@
             <li class="nav-item <?= ($_SERVER['REQUEST_URI'] == '/admin/instruktur') ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="/admin/instruktur">
                     <i class="fas fa-users"></i>
-                    <span>Daftar Instruktur</span>
+                    <span>Data Instruktur</span>
                 </a>
             </li>
             <!-- Divider -->

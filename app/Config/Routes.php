@@ -66,17 +66,10 @@ $routes->post('/admin/instruktur/edit/(:num)', 'Admin::updateInstrukturProcess/$
 
 # Halaman Peserta
 $routes->get('/peserta', 'Peserta::index');
-$routes->get('/peserta/dashboard', 'Peserta::index');
-$routes->get('/peserta/peserta', 'Peserta::pesertaPage');
-$routes->get('/peserta/pelatihan', 'Peserta::pelatihanPage');
-$routes->get('/peserta/instruktur', 'Peserta::instrukturPage');
 
 # Halaman Instruktur
 $routes->get('/Instruktur', 'Instruktur::index');
-$routes->get('/Instruktur/dashboard', 'Instruktur::index');
-$routes->get('/Instruktur/peserta', 'Instruktur::pesertaPage');
-$routes->get('/Instruktur/pelatihan', 'Instruktur::pelatihanPage');
-$routes->get('/Instruktur/instruktur', 'Instruktur::instrukturPage');
+
 
 /*
  * --------------------------------------------------------------------

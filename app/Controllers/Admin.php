@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\UserModel;
 use App\Models\InstrukturModel;
 use App\Models\PelatihanModel;
+use App\Models\PendaftaranModel;
 
 class Admin extends BaseController
 {
