@@ -1,1 +1,1 @@
-# E-Courses using CodeIgniter 4
+# Simple E-Courses with CodeIgniter 4
